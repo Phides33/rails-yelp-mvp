@@ -1,0 +1,37 @@
+<h1><%= @restaurant.name %></h1>
+<p><%= @restaurant.category %></p>
+<p><%= @restaurant.address %></p>
+<p><%= @restaurant.phone_number %></p>
+<p>
+  <%= link_to "Edit", edit_admin_restaurant_path(@restaurant),class: "btn btn-primary" %>
+  <%=
+    link_to "Delete", admin_restaurant_path(@restaurant),
+    method: :delete,
+    data: { confirm: "Are you sure?" },
+    class: "btn btn-warning"
+  %>
+</p>
+<h3>-------------- Reviews --------------</h3>
+<ul>
+  <% @restaurant.reviews.each do |review| %>
+  <li><p>Rated <%= review.rating %>
+    on <%= review.updated_at %></p>
+    <%= review.content %>
+    <%= link_to "Edit review", edit_admin_review_path(review), class: "btn btn-primary" %>
+  <%=
+    link_to "Delete review", admin_review_path(review),
+    method: :delete,
+    data: { confirm: "Are you sure?" },
+    class: "btn btn-warning"
+  %>
+  </li>
+  <% end %>
+</ul>
+<h3>--------------------------------------</h3>
+
+
+<p>
+  <%= link_to "Add review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+</p>
+
+<%= link_to "Back to list", root_path, class: "btn btn-primary" %>

@@ -1,0 +1,6 @@
+<h1>REVIEW for: <%= @review.restaurant[:name] %></h1>
+<%= simple_form_for @review, url: admin_review_path(@review) do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+  <%= f.submit "Save", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>The ultimate restaurant guide</h1>
+
+  <ul>
+    <% @restaurants.each_with_index do |restaurant, i| %>
+    <% i += 1 %>
+    <li>
+      <h2><%= i %>/ <%= restaurant[:name] %></h2>
+      <p><%= restaurant[:category] %></p>
+      <p><%= restaurant[:address] %></p>
+      <p><%= restaurant[:phone_number] %></p>
+      <p>
+        <%= link_to "Show", restaurant_path(restaurant), class: "btn btn-primary" %>
+        <%= link_to "Edit", edit_admin_restaurant_path(restaurant), class: "btn btn-primary" %>
+        <%= link_to "Delete", admin_restaurant_path(restaurant),
+          method: :delete,
+          data: { confirm: "Are you sure?" },
+          class: "btn btn-primary"
+        %>
+      </p>
+      </li>
+    <% end %>
+  </ul>
+
+<%= link_to "New restaurant", new_restaurant_path %>
+</div>
