@@ -1,14 +1,12 @@
+<h1>The ultimate restaurant guide</h1>
 <div class="container">
-  <h1>The ultimate restaurant guide</h1>
-
-  <ul>
-    <% @restaurants.each_with_index do |restaurant, i| %>
-    <% i += 1 %>
-    <li>
-      <h2><%= i %>/ <%= restaurant[:name] %></h2>
-      <p><%= restaurant[:category] %></p>
-      <p><%= restaurant[:address] %></p>
-      <p><%= restaurant[:phone_number] %></p>
+  <div class="row">
+    <% @restaurants.each do |restaurant| %>
+    <div class="card col-lg-6">
+      <h2><%= restaurant.name %></h2>
+      <p><%= restaurant.category %></p>
+      <p><%= restaurant.address %></p>
+      <p><%= restaurant.phone_number %></p>
       <p>
         <%= link_to "Show", restaurant_path(restaurant), class: "btn btn-primary" %>
         <%= link_to "Edit", edit_admin_restaurant_path(restaurant), class: "btn btn-primary" %>
@@ -18,9 +16,9 @@
           class: "btn btn-primary"
         %>
       </p>
-      </li>
-    <% end %>
-  </ul>
+    </div>
+  </div>
 
+  <% end %>
 <%= link_to "New restaurant", new_restaurant_path %>
 </div>

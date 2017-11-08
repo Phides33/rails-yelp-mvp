@@ -1,16 +1,19 @@
 <h1><%= @restaurant.name %></h1>
-<p><%= @restaurant.category %></p>
-<p><%= @restaurant.address %></p>
-<p><%= @restaurant.phone_number %></p>
-<p>
-  <%= link_to "Edit", edit_admin_restaurant_path(@restaurant),class: "btn btn-primary" %>
-  <%=
-    link_to "Delete", admin_restaurant_path(@restaurant),
-    method: :delete,
-    data: { confirm: "Are you sure?" },
-    class: "btn btn-warning"
-  %>
-</p>
+<div class="card">
+  <p><%= @restaurant.category %></p>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <p>
+    <%= link_to "Edit", edit_admin_restaurant_path(@restaurant),class: "btn btn-primary" %>
+    <%=
+      link_to "Delete", admin_restaurant_path(@restaurant),
+      method: :delete,
+      data: { confirm: "Are you sure?" },
+      class: "btn btn-warning"
+    %>
+  </p>
+</div>
+
 <h3>-------------- Reviews --------------</h3>
 <ul>
   <% @restaurant.reviews.each do |review| %>
